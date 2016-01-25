@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/local/lib
+includedir=${prefix}/local/include/vcard
+
+
+Name: Vcard
+Description: Vcard Library
+Version: 1.0.2
+Libs: -L${libdir} -lvcard 
+Libs.private: -lQt5Core -lpthread   
+Cflags: -I${includedir}
+Requires: QtCore
+
