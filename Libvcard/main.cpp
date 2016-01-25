@@ -1,30 +1,52 @@
-#include <iostream>
 #include <QFile>
 #include <QtCore/QDebug>
 
-#include "/home/yoctoadm/Workspace/MyLibvcard/Libvcard/include/vcard/vcard.h"
-#include "/home/yoctoadm/Workspace/MyLibvcard/Libvcard/include/vcard/vcardproperty.h"
+#include "include/vcard/vcard.h"
+#include "include/vcard/vcardproperty.h"
 
 int main(int argc, char *argv[])
 {
-    vCard vcard;
+//    vCard vcard;
 
-    vCardPropertyList vcardList;
+//    vCardPropertyList vcardList;
 
-    vCardProperty name_prop1 = vCardProperty::createName("Philipp", "Lahm");
-    vcardList.append(name_prop1);
-    vcard.addProperties(vcardList);
+//    vCardProperty name_prop = vCardProperty::createName("Philipp", "Lahm");
+//    vCardProperty tel_pro = vCardProperty::createTelephone("123456789");
+//    vcardList.append(name_prop);
+//    vcardList.append(tel_pro);
+//    vcard.addProperties(vcardList);
 
+//    QByteArray output = vcard.toByteArray();
 
+//    QFile file("../test.vcf");
+//    file.open(QIODevice::WriteOnly);
+//    file.write(output);
+//    file.close();
 
-    QByteArray output = vcard.toByteArray();
+//   vcard.saveToFile("../test.vcf");
 
-    QFile file("/home/yoctoadm/Workspace/MyLibvcard/test.vcf");
-    file.open(QIODevice::WriteOnly);
-    file.write(output);
-    file.close();
+    QString fileName("../test.vcf");
 
-//    vcard.saveToFile("/home/yoctoadm/Workspace/LibVcardTest/test.vcf");
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "Error by opening file";
+        return 0;
+    }
+
+    QByteArray in = file.readAll();
+
+    // Now we can parse it...
+    QList<vCard> vcards = vCard::fromByteArray(in);
+
+    // and then we can use it.
+    if (!vcards.isEmpty())
+    {
+        vCard vcard = vcards.takeFirst();
+        vCardProperty name_prop = vcard.property(VC_TELEPHONE);
+        QString value = name_prop.value();
+        qDebug() << "Telephone: " << value;
+    }
 
     return 0;
 }

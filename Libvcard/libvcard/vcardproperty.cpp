@@ -226,3 +226,8 @@ vCardProperty vCardProperty::createOrganization(const QString& name, const QStri
     return vCardProperty(VC_ORGANIZATION, values, params);
 }
 
+vCardProperty vCardProperty::createTelephone(const QString& telephoneNumber, const vCardParamList& params)
+{
+    return vCardProperty(VC_TELEPHONE, telephoneNumber, params);
+}
+
