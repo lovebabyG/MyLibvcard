@@ -55,6 +55,9 @@
 #define VC_URL                  "URL"
 #define VC_VERSION              "VERSION"
 
+#define VC_CALLDATETIME         "X-IRMC-CALL-DATETIME"
+
+
 class vCardProperty
 {
 public:
