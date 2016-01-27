@@ -6,6 +6,8 @@
 
 int main(int argc, char *argv[])
 {
+    // Edit something
+
     QString fileName("../TestVcards/mch.vcf");
     QFile file(fileName);
 
