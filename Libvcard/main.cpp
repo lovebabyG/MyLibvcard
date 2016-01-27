@@ -6,27 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-//    vCard vcard;
-
-//    vCardPropertyList vcardList;
-
-//    vCardProperty name_prop = vCardProperty::createName("Philipp", "Lahm");
-//    vCardProperty tel_pro = vCardProperty::createTelephone("123456789");
-//    vcardList.append(name_prop);
-//    vcardList.append(tel_pro);
-//    vcard.addProperties(vcardList);
-
-//    QByteArray output = vcard.toByteArray();
-
-//    QFile file("../test.vcf");
-//    file.open(QIODevice::WriteOnly);
-//    file.write(output);
-//    file.close();
-
-//   vcard.saveToFile("../test.vcf");
-
-//    QString fileName("../test.vcf");
-
     QString fileName("../TestVcards/mch.vcf");
     QFile file(fileName);
 
